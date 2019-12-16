@@ -1,0 +1,22 @@
+{
+  "name": "mern_shopping_list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.1",
+    "nodemon": "^2.0.2"
+  }
+}
