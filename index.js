@@ -34,6 +34,6 @@ if(process.env.NODE_ENV === 'production'){
 
 app.use('/api/item',items);
 
-app.listen(5000,()=>{
-    console.log("server running 5000");
+app.listen(process.env.PORT || 5000,()=>{
+    console.log("server running");
 })
