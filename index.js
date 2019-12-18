@@ -34,6 +34,6 @@ if(process.env.NODE_ENV === 'production'){
 
 app.use('/api/item',items);
 
-app.listen(8858,()=>{
-    console.log("server running 8858");
+app.listen(5000,()=>{
+    console.log("server running 5000");
 })
