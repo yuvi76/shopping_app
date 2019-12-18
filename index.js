@@ -1,19 +1,18 @@
 const express = require('express');
-const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const {mongoUrl} = require('./keys');
-const items = require('./router/api/items');
+const config = require('config');
 const path = require('path');
 
 require('./models/Item');
 // const authRouter = require('./router/authRouter');
-app.use(bodyparser.json());
+app.use(express.json());
 // app.use(authRouter);
 
-mongoose.connect(mongoUrl,{
+mongoose.connect(config.get('mongoURI'),{
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex:true
 });
 
 mongoose.connection.on('connected',()=>{
@@ -32,7 +31,9 @@ if(process.env.NODE_ENV === 'production'){
     })
 }
 
-app.use('/api/item',items);
+app.use('/api/items',require('./router/api/items'));
+app.use('/api/user',require('./router/api/users'));
+app.use('/api/auth',require('./router/api/auth'));
 
 app.listen(process.env.PORT || 5000,()=>{
     console.log("server running");
