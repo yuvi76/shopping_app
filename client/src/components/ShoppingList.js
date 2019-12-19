@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 class ShoppingList extends Component {
   static propTypes = {
     getItems: PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool
   };
 
   componentDidMount() {
@@ -28,7 +29,7 @@ class ShoppingList extends Component {
             {items.map(({ _id, name }) => (
               <CSSTransition key={_id} timeout={500} classNames='fade'>
                 <ListGroupItem>
-                  {/* {this.props.isAuthenticated ? ( */}
+                  {this.props.isAuthenticated ? (
                     <Button
                       className='remove-btn'
                       color='danger'
@@ -37,7 +38,7 @@ class ShoppingList extends Component {
                     >
                       &times;
                     </Button>
-                  {/* ) : null} */}
+                  ) : null }
                   {name}
                 </ListGroupItem>
               </CSSTransition>
@@ -50,7 +51,8 @@ class ShoppingList extends Component {
 }
 
 const mapStateToProps = state => ({
-  item: state.item
+  item: state.item,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(

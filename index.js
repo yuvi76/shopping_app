@@ -32,9 +32,9 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 app.use('/api/items',require('./router/api/items'));
-app.use('/api/user',require('./router/api/users'));
+app.use('/api/users',require('./router/api/users'));
 app.use('/api/auth',require('./router/api/auth'));
 
 app.listen(process.env.PORT || 5000,()=>{
     console.log("server running");
-})
+});
